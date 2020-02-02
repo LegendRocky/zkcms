@@ -15,6 +15,7 @@ import router from './router'
 
 import './icons' // icon
 import './permission' // permission control
+
 import './utils/error-log' // error log
 
 import * as filters from './filters' // global filters
@@ -27,10 +28,14 @@ import * as filters from './filters' // global filters
  * Currently MockJs will be used in the production environment,
  * please remove it before going online! ! !
  */
-// import { mockXHR } from '../mock'
-// if (process.env.NODE_ENV === 'production') {
-//   mockXHR()
-// }
+import { mockXHR } from '../mock'
+console.log("ENV: " + process.env.NODE_ENV)
+//if (process.env.NODE_ENV === 'production') {
+  mockXHR()
+//}
+
+import Print from '@/plugs/print'
+Vue.use(Print)
 
 Vue.use(Element, {
   size: Cookies.get('size') || 'medium' // set element-ui default size

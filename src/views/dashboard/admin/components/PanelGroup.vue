@@ -20,7 +20,7 @@
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            电子书
+            档案数
           </div>
           <count-to :start-val="0" :end-val="data.book" :duration="3000" class="card-panel-num" />
         </div>
@@ -33,7 +33,7 @@
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            书架数
+            统计1
           </div>
           <count-to :start-val="0" :end-val="data.shelf" :duration="3200" class="card-panel-num" />
         </div>
@@ -46,7 +46,7 @@
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            评分数
+            统计2
           </div>
           <count-to :start-val="0" :end-val="data.rank" :duration="3600" class="card-panel-num" />
         </div>
@@ -67,11 +67,6 @@ export default {
     return {
       data: {}
     }
-  },
-  mounted() {
-    bookHome().then(response => {
-      this.data = response.data
-    })
   },
   methods: {
     handleSetLineChartData(type) {

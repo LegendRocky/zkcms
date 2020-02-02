@@ -24,7 +24,7 @@ module.exports = {
    * In most cases please use '/' !!!
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
-  publicPath: './',
+  publicPath: '/',
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
@@ -35,7 +35,8 @@ module.exports = {
     overlay: {
       warnings: false,
       errors: true
-    }
+    },
+    before: require('./mock/mock-server.js'),
     // proxy: {
     //   [process.env.VUE_APP_BASE_API]: {
     //     target: `http://127.0.0.1:${port}/mock`,
@@ -45,7 +46,6 @@ module.exports = {
     //     }
     //   }
     // },
-    // after: require('./mock/mock-server.js')
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
@@ -92,8 +92,7 @@ module.exports = {
     config
       // https://webpack.js.org/configuration/devtool/#development
       .when(process.env.NODE_ENV === 'development',
-        // config => config.devtool('source-map')
-        config => config.devtool('eval')
+        config => config.devtool('cheap-source-map')
       )
 
     config

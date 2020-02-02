@@ -1,11 +1,19 @@
 <template>
   <div class="dashboard-editor-container">
+
+    <div style="font-weight: bold;font-size: 20px;color: #666;">欢迎【{{username}}】访问「健康档案」管理后台</div>
     <panel-group @handleSetLineChartData="handleSetLineChartData" />
+
+    <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
+      <line-chart :chart-data="lineChartData" />
+    </el-row>
   </div>
 </template>
 
 <script>
+  //import GithubCorner from '@/components/GithubCorner'
   import PanelGroup from './components/PanelGroup'
+  import LineChart from './components/LineChart'
 
   const lineChartData = {
     newVisitis: {
@@ -29,12 +37,17 @@
   export default {
     name: 'DashboardAdmin',
     components: {
-      PanelGroup
+      PanelGroup,
+      LineChart
     },
     data() {
       return {
-        lineChartData: lineChartData.newVisitis
+        lineChartData: lineChartData.newVisitis,
+        username: ''
       }
+    },
+    mounted() {
+      this.username = this.$store.state.user.realname
     },
     methods: {
       handleSetLineChartData(type) {

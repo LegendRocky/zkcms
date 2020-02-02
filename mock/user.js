@@ -5,6 +5,9 @@ const tokens = {
   },
   editor: {
     token: 'editor-token'
+  },
+  zhangyi: {
+    token: 'zhangyi-token'
   }
 }
 
@@ -20,15 +23,22 @@ const users = {
     introduction: 'I am an editor',
     avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
     name: 'Normal Editor'
+  },
+  'zhangyi-token': {
+    roles: ['admin'],
+    introduction: 'I am a super administrator',
+    avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+    name: 'Super Admin'
   }
 }
 
 export default [
   // user login
   {
-    url: '/user/login',
+    url: '/user/loginnnn',
     type: 'post',
     response: config => {
+      console.log(123444)
       const { username } = config.body
       const token = tokens[username]
 
@@ -49,7 +59,7 @@ export default [
 
   // get user info
   {
-    url: '/user/info\.*',
+    url: '/user/infoooo\.*',
     type: 'get',
     response: config => {
       const { token } = config.query

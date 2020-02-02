@@ -1,34 +1,34 @@
 <template>
   <div :class="classObj" class="app-wrapper">
-    <zkheader />
     <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
+    <sidebar class="sidebar-container" />
     <div :class="{hasTagsView:needTagsView}" class="main-container">
       <div :class="{'fixed-header':fixedHeader}">
+        <navbar />
+        <tags-view v-if="needTagsView" />
       </div>
       <app-main />
       <right-panel v-if="showSettings">
         <settings />
       </right-panel>
     </div>
-    <zkfooter />
   </div>
 </template>
 
 <script>
 import RightPanel from '@/components/RightPanel'
-import { AppMain, Navbar, Settings, Sidebar, TagsView, Zkheader, Zkfooter } from './components'
+import { AppMain, Navbar, Settings, Sidebar, TagsView } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
 import { mapState } from 'vuex'
 
 export default {
   name: 'Layout',
   components: {
-    Zkheader,
-    Zkfooter,
     AppMain,
     Navbar,
     RightPanel,
     Settings,
+    Sidebar,
     TagsView
   },
   mixins: [ResizeMixin],

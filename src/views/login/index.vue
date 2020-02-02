@@ -3,7 +3,7 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">广安正康医院管理后台</h3>
+        <h3 class="title">广安正康健康档案管理后台</h3>
       </div>
 
       <el-form-item prop="username">
@@ -51,6 +51,8 @@
 </template>
 
 <script>
+import { login } from "@/api/user"
+
 export default {
   name: 'Login',
   data() {
@@ -70,8 +72,8 @@ export default {
     }
     return {
       loginForm: {
-        username: 'admin',
-        password: 'admin'
+        username: '',
+        password: ''
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -136,6 +138,14 @@ export default {
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
+          console.log(this.loginForm)
+          /*login(this.loginForm).then(response => {
+            if ( response.code === 20000 ) {
+              this.$router.push({ path: "/" })
+            } else {
+              alert(1)
+            }
+          })*/
           this.loading = true
           this.$store.dispatch('user/login', this.loginForm)
             .then(() => {
@@ -225,7 +235,7 @@ $light_gray:#eee;
     position: relative;
     width: 520px;
     max-width: 100%;
-    padding: 160px 35px 0;
+    padding: 260px 35px 0;
     margin: 0 auto;
     overflow: hidden;
   }

@@ -9,10 +9,11 @@ export function login(data) {
 }
 
 export function getInfo(token) {
+  console.log('get Info vars::::', token)
   return request({
     url: '/user/info',
     method: 'get',
-    params: { token }
+    params: {token}
   })
 }
 
@@ -20,5 +21,13 @@ export function logout() {
   return request({
     url: '/user/logout',
     method: 'post'
+  })
+}
+
+export function createUser(data) {
+  return request({
+    url: '/user/create',
+    method: 'post',
+    data
   })
 }

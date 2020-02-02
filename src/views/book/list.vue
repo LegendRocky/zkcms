@@ -251,6 +251,7 @@
             data,
             total
           } = response
+          console.log(data)
           this.list = data
           this.total = total
           this.listLoading = false

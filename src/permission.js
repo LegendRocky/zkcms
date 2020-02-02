@@ -19,7 +19,7 @@ router.beforeEach(async(to, from, next) => {
 
   // determine whether the user has logged in
   const hasToken = getToken()
-
+  
   if (hasToken) {
     if (to.path === '/login') {
       // if is logged in, redirect to the home page
@@ -36,6 +36,8 @@ router.beforeEach(async(to, from, next) => {
           // note: roles must be a object array! such as: ['admin'] or ,['developer','editor']
           const { roles } = await store.dispatch('user/getInfo')
 
+          console.log('get roles:::::', roles)
+          
           // generate accessible routes map based on roles
           const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
 
@@ -62,6 +64,7 @@ router.beforeEach(async(to, from, next) => {
       next()
     } else {
       // other pages that do not have permission to access are redirected to the login page.
+      console.log(to.path)
       next(`/login?redirect=${to.path}`)
       NProgress.done()
     }

@@ -1,5 +1,5 @@
 module.exports = {
-  title: '广安正康医院',
+  title: '健康档案',
 
   /**
    * @type {boolean} true | false

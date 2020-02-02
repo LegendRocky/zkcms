@@ -41,7 +41,8 @@ export default {
       return path
     },
     showLogo() {
-      return this.$store.state.settings.sidebarLogo
+      console.log(this.$store.state.permission.routes)
+      //return this.$store.state.settings.sidebarLogo
     },
     variables() {
       return variables

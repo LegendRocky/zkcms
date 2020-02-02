@@ -6,20 +6,34 @@ const routes = deepClone([...constantRoutes, ...asyncRoutes])
 
 const roles = [
   {
+    id: 1,
     key: 'admin',
     name: 'admin',
+    owner: "管理员",
     description: 'Super Administrator. Have access to view all pages.',
     routes: routes
   },
   {
+    id: 2,
     key: 'editor',
     name: 'editor',
+    owner: "管理员",
     description: 'Normal Editor. Can see all pages except permission page',
     routes: routes.filter(i => i.path !== '/permission')// just a mock
   },
   {
+    id: 3,
+    key: 'zhangyi',
+    name: 'zhangyi',
+    owner: "管理员",
+    description: 'Super Administrator. Have access to view all pages.',
+    routes: routes
+  },
+  {
+    id: 4,
     key: 'visitor',
     name: 'visitor',
+    owner: "管理员",
     description: 'Just a visitor. Can only see the home page and the document page',
     routes: [{
       path: '',
@@ -38,7 +52,7 @@ const roles = [
 export default [
   // mock get all routes form server
   {
-    url: '/routes',
+    url: '/routessss',
     type: 'get',
     response: _ => {
       return {
@@ -50,7 +64,7 @@ export default [
 
   // mock get all roles form server
   {
-    url: '/roles',
+    url: '/rolesssss',
     type: 'get',
     response: _ => {
       return {
@@ -62,7 +76,7 @@ export default [
 
   // add role
   {
-    url: '/role',
+    url: '/roleeeee',
     type: 'post',
     response: {
       code: 20000,
